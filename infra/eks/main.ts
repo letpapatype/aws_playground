@@ -3,7 +3,6 @@ import * as ec2 from '@aws-cdk-lib/aws-ec2';
 import * as eks from '@aws-cdk-lib/aws-eks';
 import * as efs from '@aws-cdk-lib/aws-efs';
 
-
 class EksClusterStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
