@@ -21,3 +21,21 @@ variable "vpc_cidr" {
   type        = string
   default     = "10.42.0.0/16"
 }
+
+variable "vault_client_id" {
+  description = "Vault client ID"
+  type        = string
+  default     = ""
+}
+
+variable "vault_client_secret" {
+  description = "Vault client secret"
+  type        = string
+  default     = ""
+}
+
+variable "vault_app" {
+  description = "Vault app name"
+  type        = string
+  default     = "awscreds"
+}
