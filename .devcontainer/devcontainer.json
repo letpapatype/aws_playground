@@ -3,12 +3,12 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "streetsidesoftware.code-spell-checker",
         "hashicorp.terraform",
         "ms-azuretools.vscode-docker",
         "ms-kubernetes-tools.vscode-kubernetes-tools",
         "esbenp.prettier-vscode",
-        "aws.copilot"
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
       ]
     }
   }
