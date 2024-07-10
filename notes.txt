@@ -1,0 +1,3 @@
+hcp auth login
+hcp profile init --vault-secrets
+export AWS_ACCESS_KEY_ID=$(hcp vault-secrets secrets open <key> --format json | jq -r '.static_version.value')
