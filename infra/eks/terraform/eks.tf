@@ -7,6 +7,11 @@ module "eks" {
   cluster_endpoint_public_access = true
 
   cluster_addons = {
+    coredns = {
+      version = "1.11.1"
+    }
+
+
     vpc-cni = {
       before_compute = true
       most_recent    = true
