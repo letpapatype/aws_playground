@@ -12,5 +12,5 @@
       ]
     }
   },
-  "postCreateCommand": "setup.sh"
+  "postStartCommand": "setup.sh"
 }
