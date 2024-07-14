@@ -83,8 +83,12 @@ resource "aws_efs_mount_target" "this" {
   file_system_id = module.efs.id
   subnet_id      = each.value
   // Add other necessary attributes here
+  
+
 }
 
 output "efs_id" {
   value = module.efs.id
 }
+
+// TODO: #2 Ensure eks node security groups make it to the efs mount targets

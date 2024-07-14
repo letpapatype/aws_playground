@@ -1,0 +1,4 @@
+FROM jenkins/jenkins:lts
+
+# install kubenetes plugin
+RUN jenkins-plugin-cli --plugins kubernetes

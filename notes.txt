@@ -9,13 +9,3 @@ export TF_VAR_vault_client_secret=$VAULT_CLIENT_SECRET
 aws configure -aws_access_key_id $AWS_ACCESS_KEY_ID -aws_secret_access_key $AWS_SECRET
 
 export EFS_ID=$(terraform output -raw efs_id)
-
-
-helm repo add jenkins https://charts.jenkins.io
-helm repo update
-helm upgrade jenkins jenkins/jenkins
-
-## ,controller.serviceLabels."service\.beta\.kubernetes\.io/aws-load-balancer-backend-protocol"=https
-https://github.com/jenkinsci/configuration-as-code-plugin/tree/master/demos
-kubectl get service jenkins -o json | jq -r '.status.loadBalancer.ingress[].hostname'
-http://a931cb1402709413ca84df19c82c0440-617766344.us-east-1.elb.amazonaws.com:80

@@ -63,3 +63,7 @@ module "eks" {
     "karpenter.sh/discovery" = var.cluster_name
   })
 }
+
+output "eks_cluster_id" {
+  value = module.eks.cluster_id
+}

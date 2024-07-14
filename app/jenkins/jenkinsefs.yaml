@@ -1,0 +1,41 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: aws-efs-sc
+provisioner: efs.csi.aws.com
+parameters:
+  provisioningMode: efs-ap
+  fileSystemId: fs-06e1d1d2a6c52a4ad
+  directoryPerms: "700"
+  gidRangeStart: "1000" # Optional: Specify if you want to set a starting GID for the Access Point
+  gidRangeEnd: "2000"   # Optional: Specify if you want to set an ending GID for the Access Point
+  basePath: "/jenkins"  # Optional: Specify a base path within the EFS file system
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: aws-pv
+spec:
+  capacity:
+    storage: 5Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: efs-sc
+  csi:
+    driver: efs.csi.aws.com
+    volumeHandle: fs-06e1d1d2a6c52a4ad
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jenkins-aws-pvc
+  namespace: jenkins
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: aws-efs-sc
+  resources:
+    requests:
+      storage: 5Gi
