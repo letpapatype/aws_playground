@@ -1,3 +1,4 @@
 **/creds.txt
 **/infra/eks/terraform/.terraform*
-infra/eks/terraform/terraform.tfstate
+**/*.tfstate*
+
