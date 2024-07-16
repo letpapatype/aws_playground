@@ -54,10 +54,12 @@ module "efs" {
         creation_info = {
           owner_gid   = 1000
           owner_uid   = 1000
-          permissions = "777"
+          permissions = "755"
         }
       }
     }
+
+
   }
 
   # Backup policy
@@ -70,8 +72,8 @@ module "efs" {
   }
 
   tags = {
-    Terraform   = "true"
-    Environment = "dev"
+    Created_By   = "${local.tags.created-by}"
+    Environment  = "${local.tags.env}"
   }
 }
 
@@ -83,7 +85,7 @@ resource "aws_efs_mount_target" "this" {
   file_system_id = module.efs.id
   subnet_id      = each.value
   // Add other necessary attributes here
-  
+  security_groups = [module.vpc.default_security_group_id,module.eks.cluster_primary_security_group_id]
 
 }
 

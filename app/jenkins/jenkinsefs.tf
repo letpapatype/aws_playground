@@ -6,10 +6,10 @@ resource "kubernetes_storage_class" "aws_efs_sc" {
   parameters = {
     provisioningMode = "efs-ap"
     fileSystemId     = data.aws_efs_file_system.by_id.id
-    directoryPerms   = "700"
+    directoryPerms   = "777"
     gidRangeStart    = "1000"
     gidRangeEnd      = "2000"
-    basePath         = "/jenkins"
+    basePath         = "/var/jenkins_home"
   }
 }
 

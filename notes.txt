@@ -9,3 +9,6 @@ export TF_VAR_vault_client_secret=$VAULT_CLIENT_SECRET
 aws configure -aws_access_key_id $AWS_ACCESS_KEY_ID -aws_secret_access_key $AWS_SECRET
 
 export EFS_ID=$(terraform output -raw efs_id)
+
+aws eks update-kubeconfig --name <cluster_name>
+kubectl exec -n jenkins jenkins-with-pv-78b88c5dc6-j2zkb -- cat /jenkins/secrets/initialAdminPassword
